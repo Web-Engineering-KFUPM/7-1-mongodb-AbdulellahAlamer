@@ -169,23 +169,38 @@
 
 import mongoose from "mongoose";
 
-// establish connection
+// my db url : mongodb+srv://abdulellah:<db_password>@cluster1.vl76i2v.mongodb.net/SWE_363
 
+// DATABASE_PASSWORD=8pk8qC3X65gUyIu7
+
+// establish connection
+const uri =
+  "mongodb+srv://abdulellah:8pk8qC3X65gUyIu7@cluster1.vl76i2v.mongodb.net/SWE_363";
+
+async function connect() {
+  try {
+    await mongoose.connect(uri, { dbName: "SWE_363" });
+    console.log("✅ Connected to MongoDB");
+  } catch (err) {
+    console.error("MongoDB connection error:", err);
+  }
+}
+
+connect();
 
 // define schema
+const studentSchema = new mongoose.Schema({
+  name: String,
+  age: Number,
+  major: String,
+});
 
+const Student = mongoose.model("Student", studentSchema);
 
 // create document
 
-
 // read document
-
 
 // update document
 
-
 // delete document
-
-
-
-
